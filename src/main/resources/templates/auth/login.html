@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtel Inventory - Login</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e30613 0%, #c40510 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-wrapper {
+            width: 100%;
+            max-width: 450px;
+            padding: 20px;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .login-header {
+            padding: 40px 40px 20px;
+            text-align: center;
+        }
+        
+        .login-logo {
+            font-size: 48px;
+            color: #e30613;
+            margin-bottom: 15px;
+        }
+        
+        .login-header h2 {
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .login-header p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .login-body {
+            padding: 20px 40px 40px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .form-group label i {
+            margin-right: 8px;
+            color: #e30613;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 15px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: #e30613;
+            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1);
+        }
+        
+        .btn-login {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #e30613 0%, #c40510 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+        
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(227, 6, 19, 0.3);
+        }
+        
+        .error-message {
+            background: #fee;
+            color: #c00;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-left: 4px solid #c00;
+        }
+        
+        .success-message {
+            background: #efe;
+            color: #0a0;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+            border-left: 4px solid #0a0;
+        }
+        
+        .credentials-box {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 25px;
+            font-size: 13px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .credentials-box h4 {
+            margin-bottom: 10px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .credential-row {
+            display: flex;
+            padding: 5px 0;
+        }
+        
+        .credential-label {
+            width: 80px;
+            font-weight: 600;
+            color: #666;
+        }
+        
+        .credential-value {
+            color: #333;
+            font-family: monospace;
+        }
+        
+        .footer-text {
+            text-align: center;
+            margin-top: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">📡</div>
+                <h2>AIRTEL INVENTORY</h2>
+                <p>Enterprise Asset Management System</p>
+            </div>
+            
+            <div class="login-body">
+                <!-- Error Message -->
+                <div th:if="${error}" class="error-message">
+                    <span th:text="${error}"></span>
+                </div>
+                
+                <!-- Success Message -->
+                <div th:if="${message}" class="success-message">
+                    <span th:text="${message}"></span>
+                </div>
+                
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label>
+                            <span>👤</span> Username
+                        </label>
+                        <input type="text" name="username" class="form-control" 
+                               placeholder="Enter your username" required autofocus>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>
+                            <span>🔒</span> Password
+                        </label>
+                        <input type="password" name="password" class="form-control" 
+                               placeholder="Enter your password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-login">
+                        Sign In →
+                    </button>
+                </form>
+                
+                <!-- Default Credentials -->
+                <div class="credentials-box">
+                    <h4>📋 Default Credentials:</h4>
+                    <div class="credential-row">
+                        <span class="credential-label">ADMIN:</span>
+                        <span class="credential-value">UbaldeAdmin / AdminUbalde123</span>
+                    </div>
+                    <div class="credential-row">
+                        <span class="credential-label">HR:</span>
+                        <span class="credential-value">Alinehr / Alinehr123</span>
+                    </div>
+                    <div class="credential-row">
+                        <span class="credential-label">TECHNICIAN:</span>
+                        <span class="credential-value">UbaldeTech / Alinetech123</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-text">
+            © 2024 Airtel. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

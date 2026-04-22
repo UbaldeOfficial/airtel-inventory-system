@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assets - Airtel Inventory</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Asset Management</h1>
+            <div class="user-info">
+                <span th:text="${#authentication.name}">User</span>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/assets" class="active">Assets</a>
+            <a href="/employees">Employees</a>
+            <a href="/assignments">Assignments</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Assets List</h2>
+                <a href="/assets/create" class="btn btn-primary">+ Add New Asset</a>
+            </div>
+            
+            <div class="card-body">
+                <!-- Success/Error Messages -->
+                <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+                
+                <!-- Search -->
+                <form th:action="@{/assets}" method="get" class="search-bar">
+                    <input type="text" name="search" placeholder="Search by name, serial, or brand..." 
+                           th:value="${search}" class="search-input">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <a href="/assets" class="btn btn-secondary">Clear</a>
+                </form>
+                
+                <!-- Stats -->
+                <div class="stats-summary">
+                    <span>Total: <strong th:text="${totalAssets}">0</strong></span>
+                    <span>Available: <strong th:text="${availableCount}">0</strong></span>
+                    <span>Assigned: <strong th:text="${assignedCount}">0</strong></span>
+                </div>
+                
+                <!-- Assets Table -->
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Brand</th>
+                                <th>Serial Number</th>
+                                <th>Condition</th>
+                                <th>Status</th>
+                                <th>Location</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="asset : ${assets}">
+                                <td th:text="${asset.id}">1</td>
+                                <td th:text="${asset.name}">Laptop</td>
+                                <td th:text="${asset.brand}">Dell</td>
+                                <td th:text="${asset.serialNumber}">SN123</td>
+                                <td th:text="${asset.deviceCondition}">Good</td>
+                                <td>
+                                    <span class="badge" 
+                                          th:class="'badge ' + (${asset.status.toString() == 'AVAILABLE'} ? 'badge-success' : (${asset.status.toString() == 'ASSIGNED'} ? 'badge-info' : (${asset.status.toString() == 'DAMAGED'} ? 'badge-danger' : '')))"
+                                          th:text="${asset.status}">AVAILABLE</span>
+                                </td>
+                                <td th:text="${asset.location}">Office</td>
+                                <td class="action-buttons">
+                                    <a th:href="@{/assets/{id}(id=${asset.id})}" class="btn btn-sm">View</a>
+                                    <a th:href="@{/assets/{id}/edit(id=${asset.id})}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a th:href="@{/assets/{id}/delete(id=${asset.id})}" 
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Are you sure?')">Delete</a>
+                                    <a th:href="@{/assets/{id}/qr(id=${asset.id})}" 
+                                       class="btn btn-sm btn-success">QR</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${assets == null || assets.empty}">
+                                <td colspan="8" style="text-align: center; padding: 20px;">
+                                    No assets found. <a href="/assets/create">Add your first asset</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

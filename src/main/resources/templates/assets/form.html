@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${assetDTO.id == null} ? 'Add Asset' : 'Edit Asset'">Asset Form</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 th:text="${assetDTO.id == null} ? 'Add New Asset' : 'Edit Asset'">Asset Form</h1>
+            <div class="user-info">
+                <span th:text="${#authentication.name}">User</span>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/assets" class="active">Assets</a>
+            <a href="/employees">Employees</a>
+            <a href="/assignments">Assignments</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                
+                <!-- Display general error -->
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+                
+                <form th:action="@{${assetDTO.id == null} ? '/assets/create' : '/assets/' + ${assetDTO.id} + '/edit'}" 
+                      th:object="${assetDTO}" method="post">
+                    
+                    <input type="hidden" th:field="*{id}" th:if="${assetDTO.id != null}"/>
+                    
+                    <!-- Display validation errors - MUST BE INSIDE THE FORM -->
+                    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                        <strong>Please fix the following errors:</strong>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Name</label>
+                        <input type="text" th:field="*{name}" class="form-control" placeholder="Enter asset name">
+                        <div th:if="${#fields.hasErrors('name')}" class="form-error" th:errors="*{name}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Brand</label>
+                        <input type="text" th:field="*{brand}" class="form-control" placeholder="Enter brand">
+                        <div th:if="${#fields.hasErrors('brand')}" class="form-error" th:errors="*{brand}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Serial Number</label>
+                        <input type="text" th:field="*{serialNumber}" class="form-control" placeholder="Enter serial number">
+                        <div th:if="${#fields.hasErrors('serialNumber')}" class="form-error" th:errors="*{serialNumber}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Condition</label>
+                        <select th:field="*{deviceCondition}" class="form-control">
+                            <option value="">Select Condition</option>
+                            <option value="NEW">New</option>
+                            <option value="GOOD">Good</option>
+                            <option value="FAIR">Fair</option>
+                            <option value="POOR">Poor</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label required">Purchase Date</label>
+                        <input type="date" th:field="*{purchaseDate}" class="form-control">
+                        <div th:if="${#fields.hasErrors('purchaseDate')}" class="form-error" th:errors="*{purchaseDate}"></div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Model</label>
+                        <input type="text" th:field="*{model}" class="form-control" placeholder="Enter model">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Warranty Until</label>
+                        <input type="date" th:field="*{warrantyUntil}" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Location</label>
+                        <input type="text" th:field="*{location}" class="form-control" placeholder="Enter location">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea th:field="*{description}" class="form-control" rows="3" placeholder="Enter description"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <select th:field="*{status}" class="form-control">
+                            <option value="AVAILABLE">Available</option>
+                            <option value="ASSIGNED">Assigned</option>
+                            <option value="DAMAGED">Damaged</option>
+                            <option value="UNDER_MAINTENANCE">Under Maintenance</option>
+                            <option value="RETIRED">Retired</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Last Maintenance Date</label>
+                        <input type="date" th:field="*{lastMaintenanceDate}" class="form-control">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Next Maintenance Date</label>
+                        <input type="date" th:field="*{nextMaintenanceDate}" class="form-control">
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Save Asset</button>
+                        <a href="/assets" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add this style for form errors -->
+    <style>
+        .form-error {
+            color: #dc3545;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+    </style>
+</body>
+</html>

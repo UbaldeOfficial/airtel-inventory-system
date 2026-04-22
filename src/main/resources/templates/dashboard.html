@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airtel - Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AIRTEL INVENTORY DASHBOARD</h1>
+            <div class="user-info">
+                <span th:text="${username}">User</span>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="/dashboard" class="active">Dashboard</a>
+            <a href="/assets">Assets</a>
+            <a href="/employees">Employees</a>
+            <a href="/assignments">Assignments</a>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3 th:text="${totalAssets}">0</h3>
+                <p>Total Assets</p>
+            </div>
+            <div class="stat-card">
+                <h3 th:text="${availableAssets}">0</h3>
+                <p>Available</p>
+            </div>
+            <div class="stat-card">
+                <h3 th:text="${assignedAssets}">0</h3>
+                <p>Assigned</p>
+            </div>
+            <div class="stat-card">
+                <h3 th:text="${totalEmployees}">0</h3>
+                <p>Employees</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Recent Activity</h2>
+            </div>
+            <div class="card-body">
+                <div th:each="log : ${recentLogs}" class="activity-item">
+                    <p th:text="${log.description}">Activity</p>
+                    <small th:text="${log.timestamp}">Time</small>
+                </div>
+                <p th:if="${recentLogs == null || recentLogs.empty}">No recent activity</p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Maintenance Due</h2>
+            </div>
+            <div class="card-body">
+                <div th:each="asset : ${maintenanceAssets}">
+                    <p th:text="${asset.name}">Asset</p>
+                </div>
+                <p th:if="${maintenanceAssets == null || maintenanceAssets.empty}">No maintenance due</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

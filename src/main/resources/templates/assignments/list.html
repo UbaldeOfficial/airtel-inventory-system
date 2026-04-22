@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignments - Airtel Inventory</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Assignment Management</h1>
+            <div class="user-info">
+                <span th:text="${#authentication.name}">User</span>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/assets">Assets</a>
+            <a href="/employees">Employees</a>
+            <a href="/assignments" class="active">Assignments</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Assignments List</h2>
+                <a href="/assignments/create" class="btn btn-primary">+ New Assignment</a>
+            </div>
+            
+            <div class="card-body">
+                <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+                
+                <div class="filter-bar">
+                    <a href="/assignments" class="btn btn-sm">All</a>
+                    <a href="/assignments/active" class="btn btn-sm btn-info">Active</a>
+                    <a href="/assignments/overdue" class="btn btn-sm btn-warning">Overdue</a>
+                </div>
+                
+                <div class="stats-summary">
+                    <span>Total: <strong th:text="${totalAssignments}">0</strong></span>
+                    <span>Active: <strong th:text="${activeCount}">0</strong></span>
+                    <span>Overdue: <strong th:text="${overdueCount}">0</strong></span>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Asset</th>
+                                <th>Serial No.</th>
+                                <th>Employee</th>
+                                <th>Department</th>
+                                <th>Assigned Date</th>
+                                <th>Expected Return</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="assignment : ${assignments}">
+                                <td th:text="${assignment.id}">1</td>
+                                <td th:text="${assignment.asset.name}">Laptop</td>
+                                <td th:text="${assignment.asset.serialNumber}">SN123</td>
+                                <td th:text="${assignment.employee.fullName}">John Doe</td>
+                                <td th:text="${assignment.employee.department}">IT</td>
+                                <td th:text="${assignment.assignedDate}">2024-01-01</td>
+                                <td th:text="${assignment.expectedReturnDate}">2024-02-01</td>
+                                <td>
+                                    <span class="badge" 
+                                          th:class="${assignment.status.toString() == 'ACTIVE'} ? 'badge-success' : (${assignment.status.toString() == 'OVERDUE'} ? 'badge-danger' : 'badge-info')"
+                                          th:text="${assignment.status}">ACTIVE</span>
+                                </td>
+                                <td class="action-buttons">
+                                    <a th:if="${assignment.status.toString() == 'ACTIVE' || assignment.status.toString() == 'OVERDUE'}"
+                                       th:href="@{/assignments/{id}/return(id=${assignment.id})}" 
+                                       class="btn btn-sm btn-success"
+                                       onclick="return confirm('Return this asset?')">Return</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${assignments == null || assignments.empty}">
+                                <td colspan="9" style="text-align: center; padding: 20px;">
+                                    No assignments found. <a href="/assignments/create">Create your first assignment</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

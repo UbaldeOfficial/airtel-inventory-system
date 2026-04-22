@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employees - Airtel Inventory</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Employee Management</h1>
+            <div class="user-info">
+                <span th:text="${#authentication.name}">User</span>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/assets">Assets</a>
+            <a href="/employees" class="active">Employees</a>
+            <a href="/assignments">Assignments</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2>Employees List</h2>
+                <a href="/employees/create" class="btn btn-primary">+ Add New Employee</a>
+            </div>
+            
+            <div class="card-body">
+                <div th:if="${success}" class="alert alert-success" th:text="${success}"></div>
+                <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+                
+                <form th:action="@{/employees}" method="get" class="search-bar">
+                    <input type="text" name="search" placeholder="Search by name or employee ID..." 
+                           th:value="${search}" class="search-input">
+                    <button type="submit" class="btn btn-primary">Search</button>
+                    <a href="/employees" class="btn btn-secondary">Clear</a>
+                </form>
+                
+                <div class="stats-summary">
+                    <span>Total: <strong th:text="${totalEmployees}">0</strong></span>
+                    <span>Active: <strong th:text="${activeCount}">0</strong></span>
+                </div>
+                
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Employee ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Department</th>
+                                <th>Designation</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="employee : ${employees}">
+                                <td th:text="${employee.id}">1</td>
+                                <td th:text="${employee.employeeId}">EMP001</td>
+                                <td th:text="${employee.fullName}">John Doe</td>
+                                <td th:text="${employee.email}">john@airtel.com</td>
+                                <td th:text="${employee.department}">IT</td>
+                                <td th:text="${employee.designation}">Developer</td>
+                                <td>
+                                    <span class="badge" th:class="${employee.active} ? 'badge-success' : 'badge-danger'"
+                                          th:text="${employee.active} ? 'Active' : 'Inactive'">Active</span>
+                                </td>
+                                <td class="action-buttons">
+                                    <a th:href="@{/employees/{id}/edit(id=${employee.id})}" class="btn btn-sm btn-warning">Edit</a>
+                                    <a th:href="@{/employees/{id}/delete(id=${employee.id})}" 
+                                       class="btn btn-sm btn-danger"
+                                       onclick="return confirm('Are you sure?')">Delete</a>
+                                </td>
+                            </tr>
+                            <tr th:if="${employees == null || employees.empty}">
+                                <td colspan="8" style="text-align: center; padding: 20px;">
+                                    No employees found. <a href="/employees/create">Add your first employee</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

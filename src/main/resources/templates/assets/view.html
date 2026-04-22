@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Asset - Airtel Inventory</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Asset Details</h1>
+            <div class="user-info">
+                <span th:text="${#authentication.name}">User</span>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+        
+        <div class="nav">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/assets" class="active">Assets</a>
+            <a href="/employees">Employees</a>
+            <a href="/assignments">Assignments</a>
+        </div>
+        
+        <div class="card">
+            <div class="card-header">
+                <h2 th:text="${asset.name}">Asset Name</h2>
+                <div>
+                    <a th:href="@{/assets/{id}/edit(id=${asset.id})}" class="btn btn-warning">Edit</a>
+                    <a href="/assets" class="btn btn-secondary">Back to List</a>
+                </div>
+            </div>
+            
+            <div class="card-body">
+                <div class="asset-details">
+                    <p><strong>ID:</strong> <span th:text="${asset.id}">1</span></p>
+                    <p><strong>Name:</strong> <span th:text="${asset.name}">Name</span></p>
+                    <p><strong>Brand:</strong> <span th:text="${asset.brand}">Brand</span></p>
+                    <p><strong>Serial Number:</strong> <span th:text="${asset.serialNumber}">SN</span></p>
+                    <p><strong>Condition:</strong> <span th:text="${asset.deviceCondition}">Good</span></p>
+                    <p><strong>Purchase Date:</strong> <span th:text="${asset.purchaseDate}">2024-01-01</span></p>
+                    <p><strong>Status:</strong> <span th:text="${asset.status}">AVAILABLE</span></p>
+                    <p><strong>Location:</strong> <span th:text="${asset.location}">Office</span></p>
+                    <p><strong>Description:</strong> <span th:text="${asset.description}">-</span></p>
+                    
+                    <div th:if="${asset.qrCodePath != null}">
+                        <p><strong>QR Code:</strong></p>
+                        <img th:src="${asset.qrCodePath}" alt="QR Code" style="width: 150px; height: 150px;">
+                    </div>
+                </div>
+                
+                <!-- Assignment History -->
+                <h3>Assignment History</h3>
+                <div class="table-container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Employee</th>
+                                <th>Assigned Date</th>
+                                <th>Return Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="assignment : ${assignmentHistory}">
+                                <td th:text="${assignment.employee.fullName}">Employee</td>
+                                <td th:text="${assignment.assignedDate}">2024-01-01</td>
+                                <td th:text="${assignment.actualReturnDate}">-</td>
+                                <td th:text="${assignment.status}">ACTIVE</td>
+                            </tr>
+                            <tr th:if="${assignmentHistory == null || assignmentHistory.empty}">
+                                <td colspan="4" style="text-align: center;">No assignment history</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
