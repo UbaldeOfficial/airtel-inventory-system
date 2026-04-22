@@ -1,6 +1,14 @@
 FROM eclipse-temurin:17-jdk
+
 WORKDIR /app
+
 COPY . .
-RUN ./mvnw clean package -DskipTests
+
+# install maven inside container (FIXES mvnw issues)
+RUN apt-get update && apt-get install -y maven
+
+RUN mvn clean package -DskipTests
+
 EXPOSE 8080
-CMD ["sh", "-c", "java -jar target/*.jar --spring.profiles.active=prod"]
+
+CMD ["sh", "-c", "java -jar target/*.jar --server.port=${PORT} --spring.profiles.active=prod"]
