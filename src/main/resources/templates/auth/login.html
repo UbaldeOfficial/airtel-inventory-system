@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airtel Inventory - Login</title>
+    <title>IMS - Inventory Management System</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <style>
         body {
-            background: linear-gradient(135deg, #e30613 0%, #c40510 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -34,7 +34,6 @@
         
         .login-logo {
             font-size: 48px;
-            color: #e30613;
             margin-bottom: 15px;
         }
         
@@ -65,11 +64,6 @@
             color: #555;
         }
         
-        .form-group label i {
-            margin-right: 8px;
-            color: #e30613;
-        }
-        
         .form-control {
             width: 100%;
             padding: 12px 15px;
@@ -81,14 +75,14 @@
         
         .form-control:focus {
             outline: none;
-            border-color: #e30613;
-            box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1);
+            border-color: #1a1a2e;
+            box-shadow: 0 0 0 3px rgba(26, 26, 46, 0.1);
         }
         
         .btn-login {
             width: 100%;
             padding: 14px;
-            background: linear-gradient(135deg, #e30613 0%, #c40510 100%);
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: white;
             border: none;
             border-radius: 10px;
@@ -101,7 +95,7 @@
         
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(227, 6, 19, 0.3);
+            box-shadow: 0 10px 20px rgba(26, 26, 46, 0.3);
         }
         
         .error-message {
@@ -145,7 +139,7 @@
         }
         
         .credential-label {
-            width: 80px;
+            width: 90px;
             font-weight: 600;
             color: #666;
         }
@@ -167,8 +161,8 @@
     <div class="login-wrapper">
         <div class="login-card">
             <div class="login-header">
-                <div class="login-logo">📡</div>
-                <h2>AIRTEL INVENTORY</h2>
+                <div class="login-logo">📦</div>
+                <h2>IMS - INVENTORY MANAGEMENT</h2>
                 <p>Enterprise Asset Management System</p>
             </div>
             
@@ -205,20 +199,20 @@
                     </button>
                 </form>
                 
-                <!-- Default Credentials -->
+                <!-- System Credentials -->
                 <div class="credentials-box">
-                    <h4>📋 Default Credentials:</h4>
+                    <h4>📋 System Credentials:</h4>
                     <div class="credential-row">
-                        <span class="credential-label">ADMIN:</span>
-                        <span class="credential-value">UbaldeAdmin / AdminUbalde123</span>
+                        <span class="credential-label">SysAdmin:</span>
+                        <span class="credential-value">24RP05770 / 24RP03478</span>
                     </div>
                     <div class="credential-row">
                         <span class="credential-label">HR:</span>
-                        <span class="credential-value">Alinehr / Alinehr123</span>
+                        <span class="credential-value">24RP03478 / Aline123</span>
                     </div>
                     <div class="credential-row">
-                        <span class="credential-label">TECHNICIAN:</span>
-                        <span class="credential-value">UbaldeTech / Alinetech123</span>
+                        <span class="credential-label">Technician:</span>
+                        <span class="credential-value">24RP05770tech / UbaldeTech123</span>
                     </div>
                 </div>
             </div>

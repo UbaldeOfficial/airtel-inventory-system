@@ -12,17 +12,20 @@ public class InventorySystemApplication {
         SpringApplication.run(InventorySystemApplication.class, args);
         System.out.println("\n╔══════════════════════════════════════════════════════════════╗");
         System.out.println("║                                                              ║");
-        System.out.println("║        AIRTEL INVENTORY MANAGEMENT SYSTEM                     ║");
+        System.out.println("║        IMS - INVENTORY MANAGEMENT SYSTEM                      ║");
         System.out.println("║        Enterprise Asset Tracking Solution                     ║");
         System.out.println("║                                                              ║");
         System.out.println("║        Application Started Successfully!                      ║");
         System.out.println("║        Access URL: http://localhost:8080                      ║");
         System.out.println("║                                                              ║");
-        System.out.println("║        Default Users:                                         ║");
-        System.out.println("║        ADMIN    : UbaldeAdmin / AdminUbalde123               ║");
-        System.out.println("║        HR       : Alinehr / Alinehr123                       ║");
-        System.out.println("║        TECHNICIAN: UbaldeTech / Alinetech123                 ║");
+        System.out.println("║        System Users:                                          ║");
+        System.out.println("║        SysAdmin  : 24RP05770 / 24RP03478                     ║");
+        System.out.println("║        HR        : 24RP03478 / Aline123                      ║");
+        System.out.println("║        Technician: 24RP05770tech / UbaldeTech123             ║");
+        System.out.println("║                                                              ║");
+        System.out.println("║        IBYIMANIKORA Ubalde (24RP05770)                       ║");
+        System.out.println("║        CYUZUZO Aline (24RP03478)                             ║");
         System.out.println("║                                                              ║");
         System.out.println("╚══════════════════════════════════════════════════════════════╝\n");
-    }
+ }
 }
