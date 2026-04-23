@@ -1,151 +1,218 @@
+# IMS – Inventory Management System
+
+## **Project Overview**
+
+IMS (Inventory Management System) is a complete solution designed to manage and track end-user equipment such as laptops, desktops, and mobile devices.
+
+The system provides clear visibility of **asset ownership**, **device condition**, and **asset movement**, while simplifying the process of issuing and returning equipment.
+
+---
+
+## **Live Demo**
+
+**Access the system online:**  
+https://airtel-inventory.onrender.com  
+
 **Note on Accessing the Live System**
 
-The application is hosted on a free-tier cloud platform. Due to this limitation, the system automatically goes into a sleep state after approximately 15 minutes of inactivity.
+The application is hosted on a **free-tier cloud platform**. Due to this limitation, the system automatically goes into a sleep state after approximately **15 minutes of inactivity**.
 
-When accessed again, the application may take around 30 to 60 seconds (or slightly longer) to load as the server initializes.
+When accessed again, the application may take around **30 to 60 seconds (or slightly longer)** to load as the server initializes.
 
 Kindly allow this initial loading time. Once the system is active, it will perform normally without delays.
 
+---
 
+## **Developers**
 
+**IBYIMANIKORA Ubalde** – 24RP05770  
+**CYUZUZO Aline** – 24RP03478  
 
+---
 
+## **System Access Credentials**
 
+**System Administrator**  
+Username: 24RP05770  
+Password: 24RP03478  
 
+**HR**  
+Username: 24RP03478  
+Password: Aline123  
 
+**Technician**  
+Username: 24RP05770tech  
+Password: UbaldeTech123  
 
-Inventory Management System
-Project Overview
+---
 
-IMS (Inventory Management System) is a complete solution designed to help organizations manage and track end-user equipment such as laptops, desktops, and mobile devices.
+## **Technology Stack**
 
-The system makes it easy to know who is using which device, what condition it is in, and how assets move within the organization. It also simplifies issuing, returning, and monitoring equipment while keeping a clear history of all actions.
+The system is built using modern technologies:
 
-Live Demo
+- **Spring Boot** (Backend Framework)  
+- **Java 17** (Programming Language)  
+- **Spring Security** (Authentication & Authorization)  
+- **MySQL (XAMPP)** for local development  
+- **PostgreSQL** for cloud deployment  
+- **Hibernate / JPA** for database management  
+- **Thymeleaf + Custom CSS** for frontend  
+- **Maven** for dependency management  
+- **Eclipse IDE** for development  
+- **Render (Docker)** for cloud hosting  
 
-You can access the deployed system here:
-https://airtel-inventory.onrender.com
+---
 
-Since the system is hosted on a free tier, it may take around 30 to 60 seconds to load the first time.
+## **Key Features**
 
-Developers
+### **Authentication & Security**
+- Secure login using **Spring Security**
+- **BCrypt password encryption**
+- **Role-based access control** (SysAdmin, HR, Technician)
 
-This project was developed by:
+### **Asset Management**
+- Full **CRUD operations** (Create, Read, Update, Delete)
+- **Soft delete** for audit purposes
+- **Asset condition tracking**
+- Search by **name, serial number, or brand**
+- Ready for **QR code integration**
 
-IBYIMANIKORA Ubalde – Registration Number: 24RP05770
-CYUZUZO Aline – Registration Number: 24RP03478
+### **Employee Management**
+- Manage employee records
+- Track **departments**
+- Control **active/inactive status**
 
-System Access Credentials
+### **Assignment Tracking**
+- Assign assets to employees
+- Track **assignment and return dates**
+- Automatic **status updates**
+- Record **return condition notes**
 
-The system has different user roles with specific access levels:
+### **Audit Logging**
+- Automatic tracking of all system actions
+- Records **who performed each action and when**
+- Full **audit trail for accountability**
 
-System Administrator
-Username: 24RP05770
-Password: 24RP03478
+### **Dashboard & Reporting**
+- **Real-time statistics**
+- **Recent activity monitoring**
+- Maintenance alerts
+- Support for **PDF and Excel reports**
 
-HR
-Username: 24RP03478
-Password: Aline123
+---
 
-Technician
-Username: 24RP05770tech
-Password: UbaldeTech123
+## **Deployment Overview**
 
-Technology Stack
+The system works in both **local** and **cloud** environments.
 
-The system is built using modern backend and frontend technologies.
+- **Local Development:** Runs using Eclipse, Spring Boot, and MySQL (XAMPP)  
+- **Cloud Deployment:** Hosted on Render using Docker and PostgreSQL  
 
-It uses Spring Boot as the main framework with Java 17 as the programming language. Security is handled using Spring Security with encrypted passwords.
+This setup ensures flexibility and scalability.
 
-For databases, MySQL is used in the local environment through XAMPP, while PostgreSQL is used in the cloud deployment on Render. Hibernate and JPA are used for database interaction.
+---
 
-The frontend is built with Thymeleaf templates combined with custom CSS. Maven is used for dependency management, and the project was developed using Eclipse IDE.
+## **Local Installation Guide**
 
-The application is deployed on Render using Docker.
+### **Requirements**
+- Java JDK 17 or higher  
+- Eclipse IDE  
+- XAMPP (MySQL)  
+- Maven  
+- Lombok  
 
-Key Features
+### **Steps**
 
-The system includes secure authentication with role-based access control, ensuring that each user only accesses what they are allowed to.
+1. Extract the project into your workspace  
+2. Start **Apache and MySQL** in XAMPP  
+3. Create a database named **airtel_inventory_db** in phpMyAdmin  
+4. Import the project into Eclipse as a **Maven project**  
+5. Install **Lombok** and restart Eclipse  
+6. Update Maven dependencies  
+7. Run the application as a **Spring Boot App**  
+8. Open: http://localhost:8080  
 
-It provides full asset management functionality, allowing users to create, update, view, and delete records. Instead of permanently deleting data, a soft delete approach is used so that records remain available for auditing.
+---
 
-Employees can also be managed within the system, including their departments and activity status.
+## **Cloud Deployment**
 
-Assets can be assigned to employees, and the system automatically tracks assignment dates, returns, and condition updates.
+The system is deployed on **Render** using Docker.
 
-Every action performed in the system is logged, creating a complete audit trail that shows who did what and when.
+- Uses **PostgreSQL** as the cloud database  
+- Configuration handled via **environment variables**  
+- Accessible through the public deployment link  
 
-A dashboard provides real-time statistics, recent activity updates, and alerts such as maintenance reminders. Reports can also be prepared for export in formats like PDF and Excel.
+---
 
-Deployment Overview
+## **Application Configuration**
 
-The project is designed to work both locally and in the cloud.
+- **Local environment:** Uses MySQL on localhost  
+- **Production environment:** Uses PostgreSQL with secure environment variables  
 
-During development, it runs on a local machine using Eclipse, Spring Boot, and MySQL through XAMPP.
+This allows the system to run seamlessly in different environments.
 
-For production, it is deployed on Render using Docker, with PostgreSQL as the cloud database.
+---
 
-This setup ensures flexibility and allows the system to scale beyond local use.
+## **Troubleshooting**
 
-Local Installation Guide
+- If port **8080 is in use**, stop the running app or change the port  
+- If **MySQL fails**, ensure XAMPP is running  
+- If **Lombok errors appear**, reinstall and restart Eclipse  
+- If **pages or CSS do not load**, refresh the browser  
+- If the **live system is slow**, wait for the server to wake up  
 
-To run the project locally, you need Java JDK 17 or higher, Eclipse IDE, XAMPP for MySQL, Maven, and Lombok.
+---
 
-Start by extracting the project into your workspace. Then open XAMPP and start Apache and MySQL.
+## **Project Structure**
 
-Create a database named airtel_inventory_db using phpMyAdmin.
+The project follows a standard **Spring Boot architecture**:
 
-Import the project into Eclipse as a Maven project. After that, install Lombok by running its installer and linking it to your Eclipse IDE.
+- Configuration files  
+- Controllers (handling requests)  
+- Entities (database models)  
+- Repositories (data access)  
+- Services (business logic)  
+- Security components  
+- Utility classes (QR, PDF, Excel)
 
-Update Maven dependencies to ensure everything is correctly loaded.
+Resources include:
+- Static files (CSS)  
+- Thymeleaf templates for UI (login, assets, employees, assignments)  
 
-Finally, run the application as a Spring Boot project and open your browser at http://localhost:8080
-.
+---
 
-Cloud Deployment
+## **Future Improvements**
 
-The system is deployed on Render using Docker containers.
+Planned features include:
 
-The deployment uses a production configuration file that connects to a PostgreSQL database through environment variables such as database URL, username, and password.
+- QR code scanning  
+- Email notifications  
+- REST API integration  
+- Mobile application  
+- Barcode support  
+- Advanced analytics  
 
-The application runs in the cloud environment and is accessible through the provided public link.
+---
 
-Application Configuration
+## **License**
 
-For local development, the system connects to a MySQL database running on localhost.
+This project was developed as part of **Backend Development with Java coursework** at Rwanda Polytechnic.  
+**All rights reserved.**
 
-In production, the system uses environment variables to securely connect to PostgreSQL. This allows the same application to run in different environments without changing the code.
+---
 
-Troubleshooting
+## **Acknowledgments**
 
-If the application fails to start because port 8080 is already in use, you can stop the conflicting application or change the port in the configuration.
+Thanks to:
 
-If the database connection fails, ensure that MySQL is running in XAMPP.
+- Spring Boot  
+- Hibernate  
+- Thymeleaf  
+- Lombok  
+- Apache POI  
+- ZXing  
+- Render Cloud Hosting  
 
-If Lombok-related errors appear, reinstall Lombok and restart Eclipse.
+---
 
-If templates or styles are not loading, check file locations or refresh your browser.
-
-If the deployed site does not load immediately, wait a short time for the free hosting service to wake up.
-
-Project Structure
-
-The project follows a standard Spring Boot structure.
-
-The Java source code includes configuration files, controllers, entities, repositories, services, security components, and utility classes.
-
-Resources include static files like CSS and dynamic Thymeleaf templates for different sections such as authentication, assets, employees, and assignments.
-
-Future Improvements
-
-Several features are planned for future development. These include QR code scanning, email notifications, a REST API for integration, a mobile application, barcode support, and more advanced analytics.
-
-License
-
-This project was developed as part of the Backend Development with Java coursework at Rwanda Polytechnic. All rights are reserved.
-
-Acknowledgments
-
-Special thanks to the teams and tools that made this project possible, including Spring Boot, Hibernate, Thymeleaf, Lombok, Apache POI, ZXing, and Render for cloud hosting.
-
-© 2026 IBYIMANIKORA Ubalde and CYUZUZO Aline
+**© 2026 IBYIMANIKORA Ubalde & CYUZUZO Aline**
