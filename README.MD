@@ -1,317 +1,147 @@
-📋 PROJECT OVERVIEW
-Airtel Inventory Management System is a comprehensive, offline-capable enterprise solution for tracking and managing end-user equipment (laptops, desktops, mobile devices). The system provides complete visibility of asset ownership, device condition, and efficient issue/return processes.
+Note on Accessing the Live System 
 
-🎯 FEATURES
-Module	Features
-Authentication	Secure login with Spring Security, BCrypt password encryption
-Role-Based Access	ADMIN, HR, TECHNICIAN roles with different permissions
-Asset Management	Full CRUD operations, soft delete, QR code generation ready
-Employee Management	Full CRUD operations, department tracking
-Assignment Tracking	Assign assets to employees, track return dates, auto-update status
-Audit Logging	Automatic logging of all actions (CREATE, UPDATE, ASSIGN, RETURN)
-Dashboard	Real-time statistics, charts, recent activity feed
-Search & Filter	Search assets by name/serial/brand, filter by status
-Reporting	PDF and Excel export ready
-Offline Capable	Runs entirely on localhost with MySQL database
-🛠️ TECHNOLOGY STACK
-Layer	Technology	Version
-Framework	Spring Boot	2.7.18
-Language	Java	17
-Security	Spring Security	5.7.11
-Database	MySQL (XAMPP)	8.0
-ORM	Hibernate / JPA	5.6.15
-Frontend	Thymeleaf	3.0.15
-Styling	Custom CSS	-
-Build Tool	Maven	3.x
-IDE	Eclipse	2023-09
-Server	Embedded Tomcat	9.0.83
-📁 PROJECT STRUCTURE
-text
-src/main/java/com/airtel/inventory_system/
-├── config/                    # Configuration classes
-│   ├── SecurityConfig.java    # Spring Security configuration
-│   ├── WebConfig.java         # Web MVC configuration
-│   └── DataInitializer.java   # Default users creation
-│
-├── controller/                # Controllers
-│   ├── web/                   # MVC Controllers
-│   │   ├── AuthController.java
-│   │   ├── DashboardController.java
-│   │   ├── AssetController.java
-│   │   ├── EmployeeController.java
-│   │   └── AssignmentController.java
-│   └── rest/                  # REST API (future)
-│
-├── dto/                       # Data Transfer Objects
-│   ├── AssetDTO.java
-│   ├── EmployeeDTO.java
-│   └── AssignmentDTO.java
-│
-├── entity/                    # JPA Entities
-│   ├── User.java
-│   ├── Asset.java
-│   ├── Employee.java
-│   ├── Assignment.java
-│   └── AuditLog.java
-│
-├── repository/                # Spring Data JPA Repositories
-│   ├── UserRepository.java
-│   ├── AssetRepository.java
-│   ├── EmployeeRepository.java
-│   ├── AssignmentRepository.java
-│   └── AuditLogRepository.java
-│
-├── service/                   # Service Interfaces
-│   ├── UserService.java
-│   ├── AssetService.java
-│   ├── EmployeeService.java
-│   ├── AssignmentService.java
-│   ├── AuditLogService.java
-│   ├── QRCodeService.java
-│   ├── PDFExportService.java
-│   └── ExcelExportService.java
-│
-├── service/impl/              # Service Implementations
-│   ├── UserServiceImpl.java
-│   ├── AssetServiceImpl.java
-│   ├── EmployeeServiceImpl.java
-│   ├── AssignmentServiceImpl.java
-│   ├── AuditLogServiceImpl.java
-│   └── ...
-│
-├── security/                  # Security Classes
-│   ├── CustomUserDetails.java
-│   └── CustomUserDetailsService.java
-│
-├── exception/                 # Custom Exceptions
-│   ├── ResourceNotFoundException.java
-│   ├── DuplicateResourceException.java
-│   └── BusinessRuleViolationException.java
-│
-├── util/                      # Utility Classes
-│   ├── QRCodeGenerator.java
-│   ├── PDFGenerator.java
-│   └── ExcelGenerator.java
-│
-└── InventorySystemApplication.java  # Main Application Class
-text
-src/main/resources/
-├── static/
-│   └── css/
-│       └── style.css          # Custom CSS styling
-│
-├── templates/                 # Thymeleaf Templates
-│   ├── auth/
-│   │   └── login.html         # Login page
-│   ├── dashboard.html         # Main dashboard
-│   ├── error.html             # Error page
-│   ├── error/
-│   │   └── access-denied.html # Access denied page
-│   ├── assets/
-│   │   ├── list.html          # Assets list
-│   │   ├── form.html          # Asset form (create/edit)
-│   │   └── view.html          # Asset details
-│   ├── employees/
-│   │   ├── list.html          # Employees list
-│   │   └── form.html          # Employee form
-│   └── assignments/
-│       ├── list.html          # Assignments list
-│       └── form.html          # Assignment form
-│
-└── application.properties     # Application configuration
-🚀 INSTALLATION & SETUP
-Prerequisites
-Software	Version	Purpose
-Java JDK	17+	Runtime
-Eclipse IDE	2023-09+	Development
-XAMPP	8.0+	MySQL Database
-Maven	3.x	Build Tool
-Lombok	1.18.30	Boilerplate reduction
-Step 1: Clone/Extract Project
-bash
-# Extract the project to your workspace
-D:\Y2 IT\Semester two\MVNApp\inventory-system\
-Step 2: Configure Database
-Start XAMPP Control Panel
+The application is hosted on a free-tier cloud platform. Due to this limitation, the system automatically goes into a sleep state after approximately 15 minutes of inactivity.
 
-Start Apache and MySQL services
+When accessed again, the application may take around 30 to 60 seconds (or slightly longer) to load as the server initializes.
 
-Open phpMyAdmin: http://localhost/phpmyadmin
+Kindly allow this initial loading time. Once the system is active, it will perform normally without delays.
 
-Create database: airtel_inventory_db (UTF-8)
 
-Step 3: Import Project to Eclipse
-Open Eclipse
 
-File → Import → Maven → Existing Maven Projects
 
-Browse to project folder
 
-Select project → Finish
+Inventory Management System
+Project Overview
 
-Step 4: Install Lombok
-Locate lombok-1.18.30.jar in Maven repository
+IMS (Inventory Management System) is a complete solution designed to help organizations manage and track end-user equipment such as laptops, desktops, and mobile devices.
 
-Double-click to run installer
+The system makes it easy to know who is using which device, what condition it is in, and how assets move within the organization. It also simplifies issuing, returning, and monitoring equipment while keeping a clear history of all actions.
 
-Select Eclipse installation → Install/Update
+Live Demo
 
-Restart Eclipse
+You can access the deployed system here:
+https://airtel-inventory.onrender.com
 
-Step 5: Update Maven Dependencies
-Right-click project → Maven → Update Project
+Since the system is hosted on a free tier, it may take around 30 to 60 seconds to load the first time.
 
-Check "Force Update of Snapshots/Releases"
+Developers
 
-Click OK
+This project was developed by:
 
-Step 6: Run Application
-Navigate to InventorySystemApplication.java
+IBYIMANIKORA Ubalde – Registration Number: 24RP05770
+CYUZUZO Aline – Registration Number: 24RP03478
 
-Right-click → Run As → Spring Boot App
+System Access Credentials
 
-Wait for Started InventorySystemApplication message
+The system has different user roles with specific access levels:
 
-Step 7: Access Application
-Open browser: http://localhost:8080
+System Administrator
+Username: 24RP05770
+Password: 24RP03478
 
-Login with default credentials
+HR
+Username: 24RP03478
+Password: Aline123
 
-🔑 DEFAULT CREDENTIALS
-Role	Username	Password	Access Level
-ADMIN	UbaldeAdmin	AdminUbalde123	Full System Access
-HR	Alinehr	Alinehr123	Employees + Reports
-TECHNICIAN	UbaldeTech	Alinetech123	Assets + Assignments
-📊 DATABASE SCHEMA
-sql
-airtel_inventory_db/
-├── users                 # User accounts
-├── user_roles           # User roles (ADMIN, HR, TECHNICIAN)
-├── assets               # Asset/Equipment records
-├── employees            # Employee records
-├── assignments          # Asset assignments
-└── audit_logs           # System activity logs
-🔐 ROLE PERMISSIONS
-Feature	ADMIN	HR	TECHNICIAN
-Dashboard	✅	✅	✅
-View Assets	✅	❌	✅
-Create/Edit Assets	✅	❌	✅
-Delete Assets	✅	❌	✅
-View Employees	✅	✅	❌
-Create/Edit Employees	✅	✅	❌
-View Assignments	✅	✅	✅
-Create Assignments	✅	✅	✅
-Return Assets	✅	✅	✅
-Reports	✅	✅	❌
-Audit Logs	✅	❌	❌
-🎮 HOW TO USE
-1. Login
-Enter username and password
+Technician
+Username: 24RP05770tech
+Password: UbaldeTech123
 
-System redirects to Dashboard
+Technology Stack
 
-2. Dashboard
-View statistics (Total Assets, Available, Assigned, Employees)
+The system is built using modern backend and frontend technologies.
 
-See recent activity feed
+It uses Spring Boot as the main framework with Java 17 as the programming language. Security is handled using Spring Security with encrypted passwords.
 
-Check maintenance due alerts
+For databases, MySQL is used in the local environment through XAMPP, while PostgreSQL is used in the cloud deployment on Render. Hibernate and JPA are used for database interaction.
 
-3. Manage Assets
-Create: Click "+ Add New Asset" → Fill form → Save
+The frontend is built with Thymeleaf templates combined with custom CSS. Maven is used for dependency management, and the project was developed using Eclipse IDE.
 
-View: Click "View" on any asset
+The application is deployed on Render using Docker.
 
-Edit: Click "Edit" → Modify fields → Save
+Key Features
 
-Delete: Click "Delete" → Confirm (soft delete)
+The system includes secure authentication with role-based access control, ensuring that each user only accesses what they are allowed to.
 
-4. Manage Employees
-Create: Click "+ Add New Employee" → Fill form → Save
+It provides full asset management functionality, allowing users to create, update, view, and delete records. Instead of permanently deleting data, a soft delete approach is used so that records remain available for auditing.
 
-Edit: Click "Edit" → Modify fields → Save
+Employees can also be managed within the system, including their departments and activity status.
 
-Delete: Click "Delete" → Employee becomes inactive
+Assets can be assigned to employees, and the system automatically tracks assignment dates, returns, and condition updates.
 
-5. Manage Assignments
-Create: Click "+ New Assignment" → Select Asset & Employee → Set dates → Save
+Every action performed in the system is logged, creating a complete audit trail that shows who did what and when.
 
-Return: Click "Return" on active assignment → Asset becomes available
+A dashboard provides real-time statistics, recent activity updates, and alerts such as maintenance reminders. Reports can also be prepared for export in formats like PDF and Excel.
 
-6. Search & Filter
-Use search bar to find assets/employees
+Deployment Overview
 
-Filter assets by status
+The project is designed to work both locally and in the cloud.
 
-Filter assignments by Active/Overdue/All
+During development, it runs on a local machine using Eclipse, Spring Boot, and MySQL through XAMPP.
 
-🛠️ TROUBLESHOOTING
-Issue	Solution
-Port 8080 already in use	Change server.port=8081 in application.properties
-MySQL connection refused	Ensure XAMPP MySQL is running
-Lombok errors	Run Lombok installer and restart Eclipse
-Template not found	Check file exists in correct folder
-CSS not loading	Hard refresh (Ctrl+F5)
-Access Denied	Login with correct role or check permissions
-📝 APPLICATION CONFIGURATION
-application.properties
+For production, it is deployed on Render using Docker, with PostgreSQL as the cloud database.
 
-properties
-# Database
-spring.datasource.url=jdbc:mysql://localhost:3306/airtel_inventory_db?createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=
+This setup ensures flexibility and allows the system to scale beyond local use.
 
-# JPA
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+Local Installation Guide
 
-# Server
-server.port=8080
+To run the project locally, you need Java JDK 17 or higher, Eclipse IDE, XAMPP for MySQL, Maven, and Lombok.
 
-# Thymeleaf
-spring.thymeleaf.cache=false
-🚧 FUTURE ENHANCEMENTS
-Feature	Status
-QR Code Scanning	Planned
-Email Notifications	Planned
-REST API	Ready for integration
-Mobile App	Future
-Barcode Support	Future
-Advanced Analytics	Future
-👨‍💻 DEVELOPER
-Field	Value
-Name	Ubalde IBYIMANIKORA & CYUZUZO Aline
+Start by extracting the project into your workspace. Then open XAMPP and start Apache and MySQL.
 
-Project	Airtel Inventory Management System
-Version	1.0.0
-Date	April 2026
-Framework	Spring Boot 2.7.18
-Java	17
-📄 LICENSE
-This project is developed for Airtel as an enterprise inventory management solution. All rights reserved.
+Create a database named airtel_inventory_db using phpMyAdmin.
 
-🙏 ACKNOWLEDGMENTS
-Spring Boot Team
+Import the project into Eclipse as a Maven project. After that, install Lombok by running its installer and linking it to your Eclipse IDE.
 
-Hibernate Team
+Update Maven dependencies to ensure everything is correctly loaded.
 
-Thymeleaf Team
+Finally, run the application as a Spring Boot project and open your browser at http://localhost:8080
+.
 
-Lombok Project
+Cloud Deployment
 
-Apache POI
+The system is deployed on Render using Docker containers.
 
-ZXing (QR Code)
+The deployment uses a production configuration file that connects to a PostgreSQL database through environment variables such as database URL, username, and password.
 
-📞 SUPPORT
-For any issues or questions:
+The application runs in the cloud environment and is accessible through the provided public link.
 
-Check the troubleshooting section
+Application Configuration
 
-Review console logs in Eclipse
+For local development, the system connects to a MySQL database running on localhost.
 
-Verify database connection in XAMPP
+In production, the system uses environment variables to securely connect to PostgreSQL. This allows the same application to run in different environments without changing the code.
 
-© 2026 Airtel Inventory Management System. All Rights Reserved.
+Troubleshooting
+
+If the application fails to start because port 8080 is already in use, you can stop the conflicting application or change the port in the configuration.
+
+If the database connection fails, ensure that MySQL is running in XAMPP.
+
+If Lombok-related errors appear, reinstall Lombok and restart Eclipse.
+
+If templates or styles are not loading, check file locations or refresh your browser.
+
+If the deployed site does not load immediately, wait a short time for the free hosting service to wake up.
+
+Project Structure
+
+The project follows a standard Spring Boot structure.
+
+The Java source code includes configuration files, controllers, entities, repositories, services, security components, and utility classes.
+
+Resources include static files like CSS and dynamic Thymeleaf templates for different sections such as authentication, assets, employees, and assignments.
+
+Future Improvements
+
+Several features are planned for future development. These include QR code scanning, email notifications, a REST API for integration, a mobile application, barcode support, and more advanced analytics.
+
+License
+
+This project was developed as part of the Backend Development with Java coursework at Rwanda Polytechnic. All rights are reserved.
+
+Acknowledgments
+
+Special thanks to the teams and tools that made this project possible, including Spring Boot, Hibernate, Thymeleaf, Lombok, Apache POI, ZXing, and Render for cloud hosting.
+
+© 2026 IBYIMANIKORA Ubalde and CYUZUZO Aline
