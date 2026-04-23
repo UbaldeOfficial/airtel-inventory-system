@@ -1,12 +1,3 @@
-# IMS – Inventory Management System
-
-## **Project Overview**
-
-IMS (Inventory Management System) is a complete solution designed to manage and track end-user equipment such as laptops, desktops, and mobile devices.
-
-The system provides clear visibility of **asset ownership**, **device condition**, and **asset movement**, while simplifying the process of issuing and returning equipment.
-
----
 
 ## **Live Demo**
 
@@ -22,6 +13,20 @@ When accessed again, the application may take around **30 to 60 seconds (or slig
 Kindly allow this initial loading time. Once the system is active, it will perform normally without delays.
 
 ---
+
+
+
+
+ Inventory Management System
+
+## **Project Overview**
+
+IMS (Inventory Management System) is a complete solution designed to manage and track end-user equipment such as laptops, desktops, and mobile devices.
+
+The system provides clear visibility of **asset ownership**, **device condition**, and **asset movement**, while simplifying the process of issuing and returning equipment.
+
+---
+
 
 ## **Developers**
 
