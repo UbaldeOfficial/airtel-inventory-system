@@ -3830,3 +3830,56 @@ Identify and stop the process that's listening on port 8080 or configure this ap
         user0_.username=? limit ?
 2026-04-23 17:22:02.396 TRACE 21988 --- [restartedMain] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [24RP05770tech]
 2026-04-23 17:22:02.397  INFO 21988 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-23 17:32:26.975  INFO 21988 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
+2026-04-23 17:32:26.998  INFO 21988 --- [Thread-11] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-04-23 17:32:27.004  INFO 21988 --- [Thread-11] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-04-23 17:32:27.005  INFO 21988 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2026-04-23 17:32:27.009  INFO 21988 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2026-04-23 17:32:27.075  INFO 21988 --- [restartedMain] c.a.i.InventorySystemApplication         : Starting InventorySystemApplication using Java 17.0.8.1 on LTE with PID 21988 (D:\Y2 IT\Semester two\MVNApp\inventory-system\target\classes started by UbaldeOfficial in D:\Y2 IT\Semester two\MVNApp\inventory-system)
+2026-04-23 17:32:27.076 DEBUG 21988 --- [restartedMain] c.a.i.InventorySystemApplication         : Running with Spring Boot v2.7.18, Spring v5.3.31
+2026-04-23 17:32:27.076  INFO 21988 --- [restartedMain] c.a.i.InventorySystemApplication         : No active profile set, falling back to 1 default profile: "default"
+2026-04-23 17:32:27.200  INFO 21988 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-04-23 17:32:27.230  INFO 21988 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 5 JPA repository interfaces.
+2026-04-23 17:32:27.305  INFO 21988 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2026-04-23 17:32:27.305  INFO 21988 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-04-23 17:32:27.305  INFO 21988 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2026-04-23 17:32:27.326  INFO 21988 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-04-23 17:32:27.326  INFO 21988 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 248 ms
+2026-04-23 17:32:27.347  INFO 21988 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-04-23 17:32:27.350  INFO 21988 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2026-04-23 17:32:27.353  INFO 21988 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2026-04-23 17:32:27.354  INFO 21988 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2026-04-23 17:32:27.499  INFO 21988 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2026-04-23 17:32:27.499  INFO 21988 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-04-23 17:32:27.800  INFO 21988 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@754db4a3, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@b04f671, org.springframework.security.web.context.SecurityContextPersistenceFilter@4571f420, org.springframework.security.web.header.HeaderWriterFilter@5dd35832, org.springframework.security.web.csrf.CsrfFilter@2b76c7b6, org.springframework.security.web.authentication.logout.LogoutFilter@64949134, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@43d57128, org.springframework.security.web.session.ConcurrentSessionFilter@2bf22e2e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2a43674, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@14b76fc7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6485a7ae, org.springframework.security.web.session.SessionManagementFilter@36a4043b, org.springframework.security.web.access.ExceptionTranslationFilter@137fb252, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3a5aa691]
+2026-04-23 17:32:27.886  INFO 21988 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2026-04-23 17:32:27.896  INFO 21988 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2026-04-23 17:32:27.900  INFO 21988 --- [restartedMain] c.a.i.InventorySystemApplication         : Started InventorySystemApplication in 0.841 seconds (JVM running for 1362.672)
+2026-04-23 17:32:27.922 DEBUG 21988 --- [restartedMain] org.hibernate.SQL                        : 
+    select
+        user0_.id as col_0_0_ 
+    from
+        users user0_ 
+    where
+        user0_.username=? limit ?
+2026-04-23 17:32:27.922 TRACE 21988 --- [restartedMain] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [24RP05770]
+2026-04-23 17:32:27.924 DEBUG 21988 --- [restartedMain] org.hibernate.SQL                        : 
+    select
+        user0_.id as col_0_0_ 
+    from
+        users user0_ 
+    where
+        user0_.username=? limit ?
+2026-04-23 17:32:27.924 TRACE 21988 --- [restartedMain] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [24RP03478]
+2026-04-23 17:32:27.925 DEBUG 21988 --- [restartedMain] org.hibernate.SQL                        : 
+    select
+        user0_.id as col_0_0_ 
+    from
+        users user0_ 
+    where
+        user0_.username=? limit ?
+2026-04-23 17:32:27.926 TRACE 21988 --- [restartedMain] o.h.type.descriptor.sql.BasicBinder      : binding parameter [1] as [VARCHAR] - [24RP05770tech]
+2026-04-23 17:32:27.928  INFO 21988 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2026-04-23 17:33:12.289  INFO 21988 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-04-23 17:33:12.289  INFO 21988 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-04-23 17:33:12.290  INFO 21988 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
