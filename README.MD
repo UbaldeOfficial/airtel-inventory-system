@@ -101,8 +101,7 @@ The system is built using modern technologies:
 ### **Dashboard & Reporting**
 - **Real-time statistics**
 - **Recent activity monitoring**
-- Maintenance alerts
-- Support for **PDF and Excel reports**
+- **etic**
 
 ---
 
@@ -178,7 +177,6 @@ The project follows a standard **Spring Boot architecture**:
 - Repositories (data access)  
 - Services (business logic)  
 - Security components  
-- Utility classes (QR, PDF, Excel)
 
 Resources include:
 - Static files (CSS)  
